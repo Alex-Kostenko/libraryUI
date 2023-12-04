@@ -15,21 +15,24 @@ export default {
 const Template: ComponentStory<typeof Calendar | any> = ({
   color = "#e10000",
   ...args
-}) => (
-  <ThemeProvider
-    theme={createTheme({
-      palette: {
-        primary: {
-          main: color ?? "#01ff38",
+}) => {
+  return (
+    <ThemeProvider
+      theme={createTheme({
+        palette: {
+          primary: {
+            main: color ?? "#01ff38",
+          },
         },
-      },
-    })}
-  >
-    <Calendar {...args} />
-  </ThemeProvider>
-);
+      })}
+    >
+      <Calendar {...args} />
+    </ThemeProvider>
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {
-  disabled: true,
+  disabled: false,
+  value: new Date("2023-12-05"),
 };

@@ -46,26 +46,29 @@ const Calendar: FC<ICalendarComponent> = ({
   colorIcon = "#2146AF",
   className,
   ...props
-}) => (
-  <LocalizationProvider dateAdapter={AdapterDateFns}>
-    <StyledDatePicker
-      data-testid="calendarTest"
-      disablePast={!!disablePast}
-      error={!!errors}
-      label={label}
-      className={className}
-      onChange={(newValue: any) => {
-        if (newValue && setValue) {
-          setValue(newValue);
-        }
-        1;
-      }}
-      slots={{
-        openPickerIcon: () => CalendarIcon(colorIcon),
-      }}
-      value={value}
-      {...props}
-    />
-  </LocalizationProvider>
-);
+}) => {
+  return (
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <StyledDatePicker
+        data-testid="calendarTest"
+        disablePast={!!disablePast}
+        error={!!errors}
+        label={label}
+        className={className}
+        onChange={(newValue: any) => {
+          console.log("value", newValue);
+          if (newValue && setValue) {
+            setValue(newValue);
+          }
+          1;
+        }}
+        slots={{
+          openPickerIcon: () => CalendarIcon(colorIcon),
+        }}
+        value={value}
+        {...props}
+      />
+    </LocalizationProvider>
+  );
+};
 export { Calendar };
